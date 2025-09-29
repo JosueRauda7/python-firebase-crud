@@ -1,13 +1,18 @@
+import os
 from fastapi import FastAPI, UploadFile, File, status
 from firebase_admin import credentials, initialize_app, firestore, storage
 from dto.user import UsuarioDTO
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
 
 app = FastAPI()
 
 # CONFIGURACIÓN FIREBASE
-cred = credentials.Certificate("config/parcial2-ufg-firebase-adminsdk-fbsvc-a90c7842a9.json")
+cred = credentials.Certificate(os.getenv("PATH_FIREBASE_CREDENTIALS"))
 firebase_app = initialize_app(cred, {
-    'storageBucket': 'parcial2-ufg.firebasestorage.app'
+    'storageBucket': os.getenv("URL_FIREBASE_STORAGE")
 })
 
 db = firestore.client()
