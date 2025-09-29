@@ -1,0 +1,4 @@
+# Dependencias
+__pycache__/
+config/*json
+.env
