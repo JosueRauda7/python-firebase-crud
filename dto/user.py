@@ -1,7 +1,7 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr
 
 class UsuarioDTO(BaseModel):
-    nombre: str
+    nombre_completo: str
     correo: EmailStr
     telefono: str
     fotografia: str | None

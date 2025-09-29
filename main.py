@@ -43,7 +43,7 @@ def get_user(user_id: str):
 @app.post("/usuarios", status_code=status.HTTP_201_CREATED)
 def create_user(usuario: UsuarioDTO):
     nuevo_usuario = {
-        "nombre_completo": usuario.nombre,
+        "nombre_completo": usuario.nombre_completo,
         "correo": usuario.correo,
         "telefono": usuario.telefono,
         "fotografia": usuario.fotografia
@@ -58,7 +58,7 @@ def update_user(user_id: str, usuario: UsuarioDTO):
     usuario_encontrado = db.collection("usuarios").document(user_id)
     if usuario_encontrado.get().exists:
         usuario_encontrado.update({
-            "nombre_completo": usuario.nombre,
+            "nombre_completo": usuario.nombre_completo,
             "correo": usuario.correo,
             "telefono": usuario.telefono,
             "fotografia": usuario.fotografia
